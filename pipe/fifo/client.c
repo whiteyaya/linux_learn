@@ -22,9 +22,9 @@ int main()
 		if(s>0)
 		{
 			buf[s]=0;
-			printf("读取成功：%s",buf);
 			//写入管道
 			write(fd,buf,strlen(buf));
+			printf("发送成功：%s",buf);
 		}
 		else
 		{
