@@ -34,7 +34,7 @@ int main()
 			printf("client quit\n");
 			return 0;
 		}
-		else//error
+		else//error 
 		{
 			perror("read");
 		}
