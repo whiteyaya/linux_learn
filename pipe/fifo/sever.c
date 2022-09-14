@@ -27,16 +27,40 @@ int main()
 		if(s>0)//读成功
 		{
 			buf[s] = 0;
-			printf("client:%s",buf);
+			printf("client:%s\n",buf);
+
+			//判断输入进行程序替换
+			if(strcmp(buf,"ls")==0)
+			{
+				
+				if(fork()==0)
+				{
+					//子进程
+					execl("/usr/bin/ls","ls",NULL);
+					exit(1);
+				}
+				waitpid(-1,NULL,0);
+			}
+			else if(strcmp(buf,"train")==0)
+			{
+				if(fork()==0)
+				{
+					//子进程
+					execl("/usr/bin/sl","sl",NULL);
+					exit(1);
+				}
+				waitpid(-1,NULL,0);
+			}
 		}
 		else if(s == 0)//对方写关闭
 		{
 			printf("client quit\n");
 			return 0;
 		}
-		else//error 
+		else//error
 		{
 			perror("read");
+			return 2;
 		}
 	}
 	close(fd);

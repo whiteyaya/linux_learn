@@ -23,10 +23,10 @@ int main()
 		ssize_t s = read(0,buf,sizeof(buf)-1);
 		if(s>0)
 		{
-			buf[s]=0;
+			buf[s-1]=0;
 			//写入管道
 			write(fd,buf,strlen(buf));
-			printf("发送成功：%s",buf);
+			printf("发送成功：%s\n",buf);
 		}
 		else
 		{
