@@ -18,6 +18,8 @@ int main()
 	{
 		buf[0]=0;
 		//从标准输入读数据
+		printf("请输入:");
+		fflush(stdout);
 		ssize_t s = read(0,buf,sizeof(buf)-1);
 		if(s>0)
 		{
