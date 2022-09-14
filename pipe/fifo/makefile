@@ -4,4 +4,4 @@ client:
 sever:
 .PHONY:clean
 clean:
-	rm -f sever client
+	rm -f sever client FIFO
