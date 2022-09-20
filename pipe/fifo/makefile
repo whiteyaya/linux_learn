@@ -1,7 +1,7 @@
 .PHONY:all
-all:client sever
+all:client server
 client:
 sever:
 .PHONY:clean
 clean:
-	rm -f sever client FIFO
+	rm -f server client FIFO

@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "types.h": "c",
+        "error.h": "c",
+        "unistd.h": "c",
+        "stdio.h": "c",
+        "cctype": "c",
+        "cmath": "c",
+        "cstdarg": "c",
+        "cstdio": "c",
+        "cstdlib": "c",
+        "cwchar": "c",
+        "cwctype": "c",
+        "exception": "c",
+        "limits": "c",
+        "*.tcc": "c",
+        "cstdint": "c",
+        "type_traits": "c",
+        "typeinfo": "c",
+        "inet.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
+}
