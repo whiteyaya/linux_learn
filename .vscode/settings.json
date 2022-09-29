@@ -17,7 +17,12 @@
         "cstdint": "c",
         "type_traits": "c",
         "typeinfo": "c",
-        "inet.h": "c"
+        "inet.h": "c",
+        "socket.h": "c",
+        "comm.h": "c",
+        "pthread.h": "c",
+        "ostream": "cpp",
+        "new": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
