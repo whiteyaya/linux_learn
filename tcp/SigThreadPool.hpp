@@ -60,7 +60,7 @@ namespace ns_threadpool
                 {
                     ins = new ThreadPool<T>();
                     ins->InitThreadPool();
-                    std::cout << "首次加载对象" << std::endl;
+                    //std::cout << "首次加载对象" << std::endl;
                 }
                 pthread_mutex_unlock(&lock);
             }
