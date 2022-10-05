@@ -47,7 +47,6 @@ int main(int argc, char *argv[])
     }
 
     std::cout << "connect success!" << std::endl;
-
     // 进行正常的业务请求了
     while(true)
     {

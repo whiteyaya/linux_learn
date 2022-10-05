@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
         std::cerr <<"socket error: " << errno << std::endl;
         return 2;
     }
+    
     // 服务器绑定端口和ip
     struct sockaddr_in local;
     //初始化清零
@@ -57,9 +58,8 @@ int main(int argc, char *argv[])
         return 4;
     }
     std::cout << "waiting connect..." << std::endl;
-    while( 1 ) 
+    while( 1) 
     {
-        
         struct sockaddr_in peer;
         socklen_t len = sizeof(peer);
         //accept获取新套接字用于通信，peer为输出型参数，接收对方的地址对象信息
@@ -71,7 +71,6 @@ int main(int argc, char *argv[])
         //取出对方地址信息
         uint16_t cli_port = ntohs(peer.sin_port);//网络字节序转为主机字节序
         std::string cli_ip = inet_ntoa(peer.sin_addr);//将网络字节序转为点分十进制
-
         std::cout << "get a new link -> : [" << cli_ip << ":" << cli_port <<"]# " << new_sock << std::endl;
         //创建线程、进程无上限,当客户链接来了，我们才给客户创建进程/线程
         //构建一个任务

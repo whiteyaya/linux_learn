@@ -30,15 +30,15 @@ namespace ns_task
                 {
                     // std::cout<<s<<std::endl;
                     buffer[s] = 0; //将获取的内容当成字符串
-                    std::cout << "client# " << buffer << std::endl;
+                    std::cout << "client"<<_sock<<"# " << buffer << std::endl;
                     //拉取逻辑
-                    std::string echo_string = ">>>server<<<, ";
+                    std::string echo_string = "get:";
                     echo_string += buffer;
                     write(_sock, echo_string.c_str(), echo_string.size());
                 }
                 else if (s == 0)
                 {
-                    std::cout << "client quit ..." << std::endl;
+                    std::cout << "client "<<_sock<<" quit" << std::endl;
                     close(_sock);
                     return 0;
                 }
