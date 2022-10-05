@@ -79,6 +79,5 @@ int main(int argc, char *argv[])
         //将任务push到后端的线程池即可
         ThreadPool<Task>::GetInstance()->PushTask(t);
     }
-
     return 0;
 }
