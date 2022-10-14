@@ -5,7 +5,17 @@
  ***************************************************/
 
 #pragma once
-
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/wait.h>
+#include <pthread.h>
 namespace ns_task
 {
     class Task

@@ -4,11 +4,8 @@
  * 使用ctrl+c退出
 ***************************************************/
 
-
-#include <iostream>
-#include <string>
-#include <cstring>
-#include <cerrno>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <arpa/inet.h>
@@ -24,10 +21,11 @@ using namespace ns_threadpool;
 using namespace ns_task;
 
 //运行格式错误
-void Usage(std::string proc)
+void Usage(char* proc)
 {
-    std::cout << "Usage: " << proc << " port" << std::endl;
+    printf("Usage:%s server_ip server_port\n",proc);
 }
+
 // ./server 8081
 int main(int argc, char *argv[])
 {
@@ -41,7 +39,7 @@ int main(int argc, char *argv[])
     // 创建listen监听套接字 
     int listen_sock = socket(AF_INET, SOCK_STREAM, 0);
     if(listen_sock < 0) {
-        std::cerr <<"socket error: " << errno << std::endl;
+        perror("socket error\n");
         return 2;
     }
     
@@ -56,7 +54,7 @@ int main(int argc, char *argv[])
     local.sin_addr.s_addr = INADDR_ANY;
     if(bind(listen_sock, (struct sockaddr*)&local, sizeof(local)) < 0)
     {
-        std::cerr << "bind error: " << errno << std::endl;
+        perror("bind error\n");
         return 3;
     }
 
@@ -64,12 +62,12 @@ int main(int argc, char *argv[])
     const int back_log = 5;
     if(listen(listen_sock, back_log) < 0)
     {
-        std::cerr << "listen error" << std::endl;
+        perror("linten error\n");
         return 4;
     }
 
     //提供服务
-    std::cout << "server running..." << std::endl;
+    printf("server running...\n");
     while(1) 
     {
         struct sockaddr_in peer;
@@ -83,8 +81,8 @@ int main(int argc, char *argv[])
 
         //取出对方地址信息
         uint16_t cli_port = ntohs(peer.sin_port);//网络字节序转为主机字节序
-        std::string cli_ip = inet_ntoa(peer.sin_addr);//将网络字节序转为点分十进制
-        std::cout << "get a new link -> : [" << cli_ip << ":" << cli_port <<"]# " << new_sock << std::endl;
+        char* cli_ip = inet_ntoa(peer.sin_addr);//将网络字节序转为点分十进制
+        printf("get a new link -> : [%s:%d]#-%d\n",cli_ip,cli_port,new_sock);
 
         //构建一个任务对象
         Task t(new_sock);

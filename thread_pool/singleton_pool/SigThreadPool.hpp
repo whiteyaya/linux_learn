@@ -31,7 +31,8 @@ namespace ns_threadpool
         pthread_mutex_t mtx_;
         pthread_cond_t cond_;
 
-        static ThreadPool<T> *ins; //静态对象
+        //静态单例对象
+        static ThreadPool<T> *ins; 
 
     private:
         // 构造函数必须得实现，但是必须要私有化
@@ -47,7 +48,7 @@ namespace ns_threadpool
         ThreadPool<T> &operator=(ThreadPool<T> &tp) = delete;
 
     public:
-        //调用该静态成员函数来创建或返回单例对象
+        //创建或返回静态单例对象ins
         static ThreadPool<T> *GetInstance()
         {
             //静态互斥锁
@@ -131,7 +132,7 @@ namespace ns_threadpool
         }
     };
 
-    //初始化静态成员
+    //初始化未被调用时的静态成员为nullpty
     template <class T>
     ThreadPool<T> *ThreadPool<T>::ins = nullptr;
 }
