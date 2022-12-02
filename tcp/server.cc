@@ -4,7 +4,6 @@
  * 使用ctrl+c退出
 ***************************************************/
 
-
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -31,7 +30,6 @@ void Usage(std::string proc)
 // ./server 8081
 int main(int argc, char *argv[])
 {
-    //运行格式错误
     if(argc != 2)
     {
         Usage(argv[0]);

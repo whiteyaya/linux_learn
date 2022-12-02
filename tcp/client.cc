@@ -1,11 +1,10 @@
 /***************************************************
  * 简易MyShell客户端--client.c
- * 运行时请添加服务器端口号、ip--./clitne 127.0.0.1 8081
+ * 运行时请添加服务器server_ip server_port---./clitne 127.0.0.1 8081
  * 客户端可以输入shell命令
- * --比如 ls -l、pwd...
+ * 比如 ls -l、pwd...
  * 输入"quit"退出客户端程序
 ***************************************************/
-
 
 #include <iostream>
 #include <string>
@@ -14,8 +13,6 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <strings.h>
-
-
 
 void Usage(std::string proc)
 {
